@@ -62,3 +62,19 @@ def count_sort(arr, maximum=-1):
         output[count_arr[element]] = element
         count_arr[element] += 1
     return output
+
+
+# try this again
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        temp = arr[i]
+        # start one to the left of i and move backwards
+        for j in range(i - 1, -1, -1):
+            if temp < arr[j]:
+                arr[j + 1] = arr[j]
+                arr[j] = temp
+    return arr
+
+
+arr1 = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7]
+print(insertion_sort(arr1))

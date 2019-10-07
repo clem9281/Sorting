@@ -45,15 +45,18 @@ def count_sort(arr, maximum=-1):
     # create an array of max + 1 zeroes
     count_arr = [0] * (maximum + 1)
 
+    # add 1 to each element at the index of the main array element: now count_arr holds an array where each index is like a key, and the element at that index is like a value indicating the count of that element in our original array
     for element in arr:
         count_arr[element] += 1
 
+    # we know how many of each element we have, but really we want to know what index each element should start to be stored at. Start at 0, and we want index 0 to hold the value 0. Then add the count of each element as we move through the array
     total = 0
     for i in range(0, maximum + 1):
         temp = count_arr[i]
         count_arr[i] = total
         total += temp
 
+    # go back through the original array. For each element, go to that index in count_arr (count_arr[element]), and the value there is the index of output where element should be stored. Don't forget to iterate that value by one so you start at the next open slot on the next pass
     output = [None] * len(arr)
     for element in arr:
         output[count_arr[element]] = element

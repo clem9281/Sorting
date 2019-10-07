@@ -48,9 +48,7 @@ def count_sort(arr, maximum=-1):
     # we know how many of each element we have, but really we want to know what index each element should start to be stored at. Start at 0, and we want index 0 to hold the value 0. Then add the count of each element as we move through the array
     total = 0
     for i in range(0, maximum + 1):
-        temp = count_arr[i]
-        count_arr[i] = total
-        total += temp
+        count_arr[i], total = total, total + count_arr[i]
 
     # go back through the original array. For each element, go to that index in count_arr (count_arr[element]), and the value there is the index of output where element should be stored. Don't forget to iterate that value by one so you start at the next open slot on the next pass
     output = [None] * len(arr)
